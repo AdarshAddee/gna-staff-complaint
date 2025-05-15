@@ -86,7 +86,7 @@ export async function submitComplaintAction(
     await set(complaintRef, complaintData);
 
     return { 
-      message: `Complaint submitted successfully! Your complaint S.No is ${newSrNo}.`,
+      message: `Complaint submitted successfully!`,
       success: true,
       srNo: newSrNo 
     };
@@ -104,3 +104,4 @@ export async function submitComplaintAction(
     };
   }
 }
+
