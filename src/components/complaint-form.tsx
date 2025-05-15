@@ -2,7 +2,8 @@
 
 import type * as React from 'react';
 import { useEffect } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react'; // Changed from 'react-dom' and 'useFormState'
+import { useFormStatus } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { complaintSchema, type ComplaintFormData } from './complaint-form-schema';
@@ -39,7 +40,7 @@ function SubmitButton() {
 }
 
 export function ComplaintForm() {
-  const [state, formAction] = useFormState(submitComplaintAction, initialState);
+  const [state, formAction] = useActionState(submitComplaintAction, initialState); // Changed from useFormState
   const { toast } = useToast();
 
   const form = useForm<ComplaintFormData>({
