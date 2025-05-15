@@ -86,9 +86,9 @@ export function ComplaintForm() {
 
 
   return (
-    <Card className="w-full shadow-xl border-2 border-primary/20 rounded-lg">
+    <Card className="w-full shadow-xl rounded-lg border border-border">
       <CardHeader>
-        <CardTitle className="text-2xl text-primary">New Complaint</CardTitle>
+        <CardTitle className="text-xl md:text-2xl text-primary">New Complaint</CardTitle>
         <CardDescription>Please fill out the details below. All fields are required.</CardDescription>
       </CardHeader>
       <form 
@@ -109,47 +109,44 @@ export function ComplaintForm() {
           }
         })}
       >
-        <CardContent className="space-y-6">
-          <div className="space-y-2">
-            <Label htmlFor="name" className="text-foreground/80">Full Name</Label>
+        <CardContent className="space-y-4 md:space-y-6">
+          <div className="space-y-1.5 md:space-y-2">
+            <Label htmlFor="name" className="text-muted-foreground">Full Name</Label>
             <Input 
               id="name" 
               {...form.register("name")} 
               placeholder="Enter your full name" 
-              className="bg-card"
               aria-invalid={form.formState.errors.name ? "true" : "false"}
             />
             {form.formState.errors.name && <p className="text-sm text-destructive">{form.formState.errors.name.message}</p>}
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="department" className="text-foreground/80">Department</Label>
+          <div className="space-y-1.5 md:space-y-2">
+            <Label htmlFor="department" className="text-muted-foreground">Department</Label>
             <Input 
               id="department" 
               {...form.register("department")} 
               placeholder="e.g., IT, HR, Maintenance" 
-              className="bg-card"
               aria-invalid={form.formState.errors.department ? "true" : "false"}
             />
             {form.formState.errors.department && <p className="text-sm text-destructive">{form.formState.errors.department.message}</p>}
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="block" className="text-foreground/80">Block / Location</Label>
+          <div className="space-y-1.5 md:space-y-2">
+            <Label htmlFor="block" className="text-muted-foreground">Block / Location</Label>
             <Input 
               id="block" 
               {...form.register("block")} 
               placeholder="e.g., A-Block, Canteen, Room 101" 
-              className="bg-card"
               aria-invalid={form.formState.errors.block ? "true" : "false"}
             />
             {form.formState.errors.block && <p className="text-sm text-destructive">{form.formState.errors.block.message}</p>}
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="issue" className="text-foreground/80">Issue Description</Label>
+          <div className="space-y-1.5 md:space-y-2">
+            <Label htmlFor="issue" className="text-muted-foreground">Issue Description</Label>
             <Textarea 
               id="issue" 
               {...form.register("issue")} 
               placeholder="Describe the issue in detail" 
-              className="min-h-[120px] bg-card"
+              className="min-h-[100px] md:min-h-[120px]"
               aria-invalid={form.formState.errors.issue ? "true" : "false"}
             />
             {form.formState.errors.issue && <p className="text-sm text-destructive">{form.formState.errors.issue.message}</p>}
