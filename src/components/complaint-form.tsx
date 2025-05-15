@@ -1,8 +1,9 @@
+
 "use client";
 
 import type * as React from 'react';
 import { useEffect } from 'react';
-import { useActionState } from 'react'; // Changed from 'react-dom' and 'useFormState'
+import { useActionState } from 'react'; 
 import { useFormStatus } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -40,7 +41,7 @@ function SubmitButton() {
 }
 
 export function ComplaintForm() {
-  const [state, formAction] = useActionState(submitComplaintAction, initialState); // Changed from useFormState
+  const [state, formAction] = useActionState(submitComplaintAction, initialState);
   const { toast } = useToast();
 
   const form = useForm<ComplaintFormData>({
@@ -91,7 +92,22 @@ export function ComplaintForm() {
         <CardTitle className="text-2xl text-primary">New Complaint</CardTitle>
         <CardDescription>Please fill out the details below. All fields are required.</CardDescription>
       </CardHeader>
-      <form action={formAction} onSubmit={form.handleSubmit(() => formAction(new FormData(form.control._formRef.current!)))} >
+      <form 
+        action={formAction} 
+        onSubmit={form.handleSubmit((_data, event) => {
+          const formElement = event?.target as HTMLFormElement | undefined;
+          if (formElement) {
+            formAction(new FormData(formElement));
+          } else {
+            console.error("Form element not found in handleSubmit event");
+            toast({
+              title: "Submission Error",
+              description: "Could not process form submission. Please try again.",
+              variant: "destructive",
+            });
+          }
+        })}
+      >
         <CardContent className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-foreground/80">Full Name</Label>
