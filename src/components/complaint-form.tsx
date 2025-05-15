@@ -2,8 +2,7 @@
 "use client";
 
 import type * as React from 'react';
-import { useEffect } from 'react';
-import { useActionState } from 'react'; 
+import { useEffect, useActionState, startTransition } from 'react'; 
 import { useFormStatus } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -97,7 +96,9 @@ export function ComplaintForm() {
         onSubmit={form.handleSubmit((_data, event) => {
           const formElement = event?.target as HTMLFormElement | undefined;
           if (formElement) {
-            formAction(new FormData(formElement));
+            startTransition(() => {
+              formAction(new FormData(formElement));
+            });
           } else {
             console.error("Form element not found in handleSubmit event");
             toast({
