@@ -49,6 +49,7 @@ export function ComplaintForm() {
       name: "",
       department: "",
       block: "",
+      roomNo: "",
       issue: "",
     },
   });
@@ -60,7 +61,7 @@ export function ComplaintForm() {
           title: "Success!",
           description: state.message,
         });
-        form.reset(); // Reset form on successful submission
+        form.reset(); 
       } else {
         toast({
           title: "Error",
@@ -71,7 +72,6 @@ export function ComplaintForm() {
     }
   }, [state, toast, form]);
   
-  // Display field-specific errors from server validation
   useEffect(() => {
     if (state.errors) {
       const fieldErrors = state.errors;
@@ -86,10 +86,10 @@ export function ComplaintForm() {
 
 
   return (
-    <Card className="w-full shadow-xl rounded-lg border border-border">
+    <Card className="w-full shadow-xl rounded-lg border border-border bg-card/80 backdrop-blur-sm">
       <CardHeader>
         <CardTitle className="text-xl md:text-2xl text-primary">New Complaint</CardTitle>
-        <CardDescription>Please fill out the details below. All fields are required.</CardDescription>
+        <CardDescription className="text-muted-foreground/90">Please fill out the details below. Fields marked with * are required.</CardDescription>
       </CardHeader>
       <form 
         action={formAction} 
@@ -109,44 +109,58 @@ export function ComplaintForm() {
           }
         })}
       >
-        <CardContent className="space-y-4 md:space-y-6">
+        <CardContent className="space-y-4 md:space-y-5">
           <div className="space-y-1.5 md:space-y-2">
-            <Label htmlFor="name" className="text-muted-foreground">Full Name</Label>
+            <Label htmlFor="name" className="text-foreground/80">Full Name *</Label>
             <Input 
               id="name" 
               {...form.register("name")} 
               placeholder="Enter your full name" 
               aria-invalid={form.formState.errors.name ? "true" : "false"}
+              className="bg-input/70 placeholder:text-muted-foreground/70"
             />
             {form.formState.errors.name && <p className="text-sm text-destructive">{form.formState.errors.name.message}</p>}
           </div>
           <div className="space-y-1.5 md:space-y-2">
-            <Label htmlFor="department" className="text-muted-foreground">Department</Label>
+            <Label htmlFor="department" className="text-foreground/80">Department *</Label>
             <Input 
               id="department" 
               {...form.register("department")} 
               placeholder="e.g., IT, HR, Maintenance" 
               aria-invalid={form.formState.errors.department ? "true" : "false"}
+              className="bg-input/70 placeholder:text-muted-foreground/70"
             />
             {form.formState.errors.department && <p className="text-sm text-destructive">{form.formState.errors.department.message}</p>}
           </div>
           <div className="space-y-1.5 md:space-y-2">
-            <Label htmlFor="block" className="text-muted-foreground">Block / Location</Label>
+            <Label htmlFor="block" className="text-foreground/80">Block / Location *</Label>
             <Input 
               id="block" 
               {...form.register("block")} 
-              placeholder="e.g., A-Block, Canteen, Room 101" 
+              placeholder="e.g., A-Block, Canteen" 
               aria-invalid={form.formState.errors.block ? "true" : "false"}
+              className="bg-input/70 placeholder:text-muted-foreground/70"
             />
             {form.formState.errors.block && <p className="text-sm text-destructive">{form.formState.errors.block.message}</p>}
           </div>
           <div className="space-y-1.5 md:space-y-2">
-            <Label htmlFor="issue" className="text-muted-foreground">Issue Description</Label>
+            <Label htmlFor="roomNo" className="text-foreground/80">Room No. (Optional)</Label>
+            <Input 
+              id="roomNo" 
+              {...form.register("roomNo")} 
+              placeholder="e.g., 101, Lab 3" 
+              aria-invalid={form.formState.errors.roomNo ? "true" : "false"}
+              className="bg-input/70 placeholder:text-muted-foreground/70"
+            />
+            {form.formState.errors.roomNo && <p className="text-sm text-destructive">{form.formState.errors.roomNo.message}</p>}
+          </div>
+          <div className="space-y-1.5 md:space-y-2">
+            <Label htmlFor="issue" className="text-foreground/80">Issue Description *</Label>
             <Textarea 
               id="issue" 
               {...form.register("issue")} 
               placeholder="Describe the issue in detail" 
-              className="min-h-[100px] md:min-h-[120px]"
+              className="min-h-[100px] md:min-h-[120px] bg-input/70 placeholder:text-muted-foreground/70"
               aria-invalid={form.formState.errors.issue ? "true" : "false"}
             />
             {form.formState.errors.issue && <p className="text-sm text-destructive">{form.formState.errors.issue.message}</p>}

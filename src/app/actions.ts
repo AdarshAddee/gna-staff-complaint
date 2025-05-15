@@ -24,6 +24,7 @@ export async function submitComplaintAction(
     name: formData.get('name'),
     department: formData.get('department'),
     block: formData.get('block'),
+    roomNo: formData.get('roomNo'), // Added roomNo
     issue: formData.get('issue'),
   };
 
@@ -77,9 +78,10 @@ export async function submitComplaintAction(
       name: data.name.toLowerCase(),
       dept: data.department.toLowerCase(),
       block: data.block.toLowerCase(),
+      'room-no': data.roomNo ? data.roomNo.toLowerCase() : "", // Added roomNo, ensure lowercase
       complaints: data.issue.toLowerCase(),
-      status: "Pending", // Default status
-      'date-solved': "" // Default empty
+      status: "Pending", 
+      'date-solved': "" 
     };
 
     const complaintRef = ref(database, `gna-complaints/${newSrNo}`);
@@ -104,4 +106,3 @@ export async function submitComplaintAction(
     };
   }
 }
-
