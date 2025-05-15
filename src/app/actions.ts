@@ -1,3 +1,4 @@
+
 "use server";
 
 import { z } from 'zod';
@@ -73,12 +74,12 @@ export async function submitComplaintAction(
     const complaintData: Complaint = {
       'sr-no': newSrNo,
       date: currentDate,
-      name: data.name,
-      dept: data.department,
-      block: data.block,
-      complaints: data.issue,
-      status: "Pending",
-      'date-solved': ""
+      name: data.name.toLowerCase(),
+      dept: data.department.toLowerCase(),
+      block: data.block.toLowerCase(),
+      complaints: data.issue.toLowerCase(),
+      status: "Pending", // Default status
+      'date-solved': "" // Default empty
     };
 
     const complaintRef = ref(database, `gna-complaints/${newSrNo}`);
