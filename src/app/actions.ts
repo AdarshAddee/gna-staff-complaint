@@ -26,7 +26,6 @@ export async function submitComplaintAction(
     block: formData.get('block'),
     roomNo: formData.get('roomNo'),
     issue: formData.get('issue'),
-    comment: formData.get('comment'), // Added comment
   };
 
   const validatedFields = complaintSchema.safeParse(rawFormData);
@@ -81,7 +80,7 @@ export async function submitComplaintAction(
       block: data.block.toLowerCase(),
       'room-no': data.roomNo ? data.roomNo.toLowerCase() : "",
       complaints: data.issue.toLowerCase(),
-      comment: data.comment ? data.comment.toLowerCase() : "", // Added comment, ensure lowercase
+      comment: "", // Default to empty string as it's not from the form
       status: "Pending", 
       'date-solved': "" 
     };

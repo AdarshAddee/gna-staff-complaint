@@ -3,7 +3,7 @@
 
 import type * as React from 'react';
 import { useEffect, startTransition } from 'react'; 
-import { useActionState } from 'react'; // Updated import
+import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -52,7 +52,6 @@ export function ComplaintForm() {
       block: "",
       roomNo: "",
       issue: "",
-      comment: "",
     },
   });
 
@@ -98,17 +97,17 @@ export function ComplaintForm() {
 
 
   return (
-    <Card className="w-full shadow-xl rounded-lg border border-border/70 bg-card/90 backdrop-blur-sm transition-all duration-300 ease-in-out">
+    <Card className="w-full shadow-xl rounded-lg border border-border/70 bg-card/90 backdrop-blur-sm transition-all duration-300 ease-in-out dark:border-border/50 dark:bg-card/80">
       <CardHeader className="pb-4">
         <CardTitle className="text-xl md:text-2xl text-primary font-semibold">New Complaint</CardTitle>
-        <CardDescription className="text-muted-foreground/80 text-sm">Please fill out the details below. Fields marked with * are required.</CardDescription>
+        <CardDescription className="text-muted-foreground/80 dark:text-muted-foreground/70 text-sm">Please fill out the details below. Fields marked with * are required.</CardDescription>
       </CardHeader>
       <form 
         action={formAction} 
         onSubmit={form.handleSubmit((_data, event) => {
           const formElement = event?.target as HTMLFormElement | undefined;
           if (formElement) {
-            startTransition(() => { // Wrap formAction in startTransition
+            startTransition(() => { 
               formAction(new FormData(formElement));
             });
           } else {
@@ -123,72 +122,61 @@ export function ComplaintForm() {
       >
         <CardContent className="space-y-4 md:space-y-5 pt-2 pb-5">
           <div className="space-y-1.5">
-            <Label htmlFor="name" className="text-foreground/90 font-medium text-sm">Full Name *</Label>
+            <Label htmlFor="name" className="text-foreground/90 dark:text-foreground/80 font-medium text-sm">Full Name *</Label>
             <Input 
               id="name" 
               {...form.register("name")} 
               placeholder="Enter your full name" 
               aria-invalid={form.formState.errors.name ? "true" : "false"}
-              className="bg-input/80 placeholder:text-muted-foreground/60 border-border/80 focus:border-primary focus:ring-primary/50 transition-colors duration-200"
+              className="bg-input/80 dark:bg-input/70 placeholder:text-muted-foreground/60 dark:placeholder:text-muted-foreground/50 border-border/80 dark:border-border/60 focus:border-primary focus:ring-primary/50 transition-colors duration-200"
             />
             {form.formState.errors.name && <p className="text-xs text-destructive pt-1">{form.formState.errors.name.message}</p>}
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="department" className="text-foreground/90 font-medium text-sm">Department *</Label>
+            <Label htmlFor="department" className="text-foreground/90 dark:text-foreground/80 font-medium text-sm">Department *</Label>
             <Input 
               id="department" 
               {...form.register("department")} 
               placeholder="e.g., IT, HR, Maintenance" 
               aria-invalid={form.formState.errors.department ? "true" : "false"}
-              className="bg-input/80 placeholder:text-muted-foreground/60 border-border/80 focus:border-primary focus:ring-primary/50 transition-colors duration-200"
+              className="bg-input/80 dark:bg-input/70 placeholder:text-muted-foreground/60 dark:placeholder:text-muted-foreground/50 border-border/80 dark:border-border/60 focus:border-primary focus:ring-primary/50 transition-colors duration-200"
             />
             {form.formState.errors.department && <p className="text-xs text-destructive pt-1">{form.formState.errors.department.message}</p>}
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="block" className="text-foreground/90 font-medium text-sm">Block / Location *</Label>
+            <Label htmlFor="block" className="text-foreground/90 dark:text-foreground/80 font-medium text-sm">Block / Location *</Label>
             <Input 
               id="block" 
               {...form.register("block")} 
               placeholder="e.g., A-Block, Canteen" 
               aria-invalid={form.formState.errors.block ? "true" : "false"}
-              className="bg-input/80 placeholder:text-muted-foreground/60 border-border/80 focus:border-primary focus:ring-primary/50 transition-colors duration-200"
+              className="bg-input/80 dark:bg-input/70 placeholder:text-muted-foreground/60 dark:placeholder:text-muted-foreground/50 border-border/80 dark:border-border/60 focus:border-primary focus:ring-primary/50 transition-colors duration-200"
             />
             {form.formState.errors.block && <p className="text-xs text-destructive pt-1">{form.formState.errors.block.message}</p>}
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="roomNo" className="text-foreground/90 font-medium text-sm">Room No. (Optional)</Label>
+            <Label htmlFor="roomNo" className="text-foreground/90 dark:text-foreground/80 font-medium text-sm">Room No. (Optional)</Label>
             <Input 
               id="roomNo" 
               {...form.register("roomNo")} 
               placeholder="e.g., 101, Lab 3" 
               aria-invalid={form.formState.errors.roomNo ? "true" : "false"}
-              className="bg-input/80 placeholder:text-muted-foreground/60 border-border/80 focus:border-primary focus:ring-primary/50 transition-colors duration-200"
+              className="bg-input/80 dark:bg-input/70 placeholder:text-muted-foreground/60 dark:placeholder:text-muted-foreground/50 border-border/80 dark:border-border/60 focus:border-primary focus:ring-primary/50 transition-colors duration-200"
             />
             {form.formState.errors.roomNo && <p className="text-xs text-destructive pt-1">{form.formState.errors.roomNo.message}</p>}
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="issue" className="text-foreground/90 font-medium text-sm">Issue Description *</Label>
+            <Label htmlFor="issue" className="text-foreground/90 dark:text-foreground/80 font-medium text-sm">Issue Description *</Label>
             <Textarea 
               id="issue" 
               {...form.register("issue")} 
               placeholder="Describe the issue in detail" 
-              className="min-h-[100px] md:min-h-[120px] bg-input/80 placeholder:text-muted-foreground/60 border-border/80 focus:border-primary focus:ring-primary/50 transition-colors duration-200"
+              className="min-h-[100px] md:min-h-[120px] bg-input/80 dark:bg-input/70 placeholder:text-muted-foreground/60 dark:placeholder:text-muted-foreground/50 border-border/80 dark:border-border/60 focus:border-primary focus:ring-primary/50 transition-colors duration-200"
               aria-invalid={form.formState.errors.issue ? "true" : "false"}
             />
             {form.formState.errors.issue && <p className="text-xs text-destructive pt-1">{form.formState.errors.issue.message}</p>}
           </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="comment" className="text-foreground/90 font-medium text-sm">Comment (Optional)</Label>
-            <Textarea 
-              id="comment" 
-              {...form.register("comment")} 
-              placeholder="Add any additional comments here" 
-              className="min-h-[80px] md:min-h-[100px] bg-input/80 placeholder:text-muted-foreground/60 border-border/80 focus:border-primary focus:ring-primary/50 transition-colors duration-200"
-              aria-invalid={form.formState.errors.comment ? "true" : "false"}
-            />
-            {form.formState.errors.comment && <p className="text-xs text-destructive pt-1">{form.formState.errors.comment.message}</p>}
-          </div>
-           {state.errors?.server && !state.success && ( // Only show server error if submission wasn't successful
+           {state.errors?.server && !state.success && ( 
             <p className="text-sm text-destructive pt-1">{state.errors.server.join(', ')}</p>
           )}
         </CardContent>
