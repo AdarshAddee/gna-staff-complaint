@@ -24,8 +24,9 @@ export async function submitComplaintAction(
     name: formData.get('name'),
     department: formData.get('department'),
     block: formData.get('block'),
-    roomNo: formData.get('roomNo'), // Added roomNo
+    roomNo: formData.get('roomNo'),
     issue: formData.get('issue'),
+    comment: formData.get('comment'), // Added comment
   };
 
   const validatedFields = complaintSchema.safeParse(rawFormData);
@@ -78,8 +79,9 @@ export async function submitComplaintAction(
       name: data.name.toLowerCase(),
       dept: data.department.toLowerCase(),
       block: data.block.toLowerCase(),
-      'room-no': data.roomNo ? data.roomNo.toLowerCase() : "", // Added roomNo, ensure lowercase
+      'room-no': data.roomNo ? data.roomNo.toLowerCase() : "",
       complaints: data.issue.toLowerCase(),
+      comment: data.comment ? data.comment.toLowerCase() : "", // Added comment, ensure lowercase
       status: "Pending", 
       'date-solved': "" 
     };

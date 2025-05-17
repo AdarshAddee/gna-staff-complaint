@@ -8,4 +8,5 @@ export interface Complaint {
   complaints: string;
   status: string; // e.g., "Pending", "Resolved"
   'date-solved': string; // YYYY-MM-DD or empty
+  comment?: string; // Optional comment
 }
