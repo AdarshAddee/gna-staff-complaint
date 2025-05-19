@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,7 +21,7 @@ body {
     --secondary-foreground: 215 25% 30%; /* Slightly lighter dark blue - #3C4A63 */
     --muted: 215 20% 80%; /* Medium gray - #C2CAD6 */
     --muted-foreground: 215 20% 50%; /* Darker muted gray - #6E7B91 */
-    --accent: 158 60% 50%; /* Fresh teal/green - #34D399 */
+    --accent: 210 70% 60%; /* New: A pleasant medium blue #66A3E0 */
     --accent-foreground: 0 0% 100%; /* White */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -35,8 +36,8 @@ body {
     --radius: 0.5rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-primary: 217 75% 55%; /* Changed to main primary blue */
+    --sidebar-primary-foreground: 0 0% 100%; /* Changed to main primary foreground */
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
@@ -55,8 +56,8 @@ body {
     --secondary-foreground: 210 40% 90%; /* Lighter gray text */
     --muted: 220 15% 30%; /* Muted dark gray - #3F4652 */
     --muted-foreground: 210 30% 70%; /* Lighter muted gray text - #A0ABC0 */
-    --accent: 158 60% 55%; /* Slightly brighter teal/green for dark mode - #4ADEA7 */
-    --accent-foreground: 220 10% 15%; /* Dark text on bright accent */
+    --accent: 210 70% 65%; /* New: A slightly lighter medium blue for dark mode #85B9E8 */
+    --accent-foreground: 220 25% 10%; /* Dark blue/gray for contrast */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 220 15% 30%; /* Subtle border for dark mode - #3F4652 */
@@ -69,8 +70,8 @@ body {
     --chart-5: 340 75% 55%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 217 75% 60%; /* Changed to main dark primary blue */
+    --sidebar-primary-foreground: 220 10% 15%; /* Changed to main dark primary foreground */
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
