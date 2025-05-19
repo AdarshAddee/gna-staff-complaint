@@ -8,7 +8,7 @@ export default function HomePage() {
         <div className="container mx-auto flex items-center justify-center sm:justify-start px-4">
           <div className="flex items-center gap-2 md:gap-3 text-2xl md:text-3xl font-bold text-primary">
             <ComplaintCentralLogo className="h-8 w-8 md:h-10 md:w-10" />
-            <span>Complaint Central</span>
+            <span>GNA University</span>
           </div>
         </div>
       </header>
@@ -17,7 +17,7 @@ export default function HomePage() {
         <div className="w-full max-w-2xl space-y-6 md:space-y-8">
           <div>
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-center text-foreground mb-1 md:mb-2">
-              Lodge Your Complaint
+              GNA IT Support Team
             </h1>
             <p className="text-center text-sm md:text-base text-muted-foreground">
               We are here to help. Please provide the details of your issue.
@@ -29,7 +29,7 @@ export default function HomePage() {
 
       <footer className="py-6 text-center bg-card border-t">
         <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Complaint Central. All rights reserved.
+          &copy; {new Date().getFullYear()} GNA University. All rights reserved.
         </p>
       </footer>
     </div>

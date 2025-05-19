@@ -8,8 +8,8 @@ const geistSans = GeistSans; // Use the imported object directly
 const geistMono = GeistMono; // Use the imported object directly
 
 export const metadata: Metadata = {
-  title: 'Complaint Central',
-  description: 'Lodge and manage complaints efficiently.',
+  title: 'GNA University',
+  description: 'GNA University IT Support - Lodge and manage complaints efficiently.',
 };
 
 export default function RootLayout({
